@@ -13,9 +13,10 @@
 //Declaring external variables for user input
 extern double Lot=0.01;
 extern double TakeProfit=0.0005;
-extern double MaxSpread=0.00005;
+extern double MaxSpread=0.0005;
 extern int Slippage=1;
-
+extern int StopTradingTime=10;
+extern int MaxOpenTrade=10;
 //Declaring account variables
 double BalanceCheck;
 double Spread;
@@ -186,9 +187,20 @@ bool isAllowedToTrade()
      {
       return false;
      }
-   else{
+   if(Hour()>StopTradingTime)
+     {
+      return false;
+     }
+
+   if(OrdersTotal()>MaxOpenTrade)
+     {
+      return false;
+     }
+
+   else
+     {
       return true;
-   }  
+     }
 
   }
 //+------------------------------------------------------------------+
