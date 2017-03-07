@@ -52,7 +52,8 @@ int OnInit()
 //+------------------------------------------------------------------+
 void OnTick()
   {
-   RefreshRates();
+
+   Comment(StringFormat("Lot = %G\nStopTradingTime = %G\nMaxOpenTrade = %d",Lot,StopTradingTime,MaxOpenTrade));
    Spread=Ask-Bid;
    CountOrdersBuy=0;
    CountOrdersSell=0;
